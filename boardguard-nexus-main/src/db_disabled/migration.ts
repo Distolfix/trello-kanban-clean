@@ -1,0 +1,60 @@
+import { dbService } from './services';
+import type { KanbanListData } from './types';
+
+export class MigrationService {
+  // Check if migration is needed
+  static needsMigration(): boolean {
+    const migrationSetting = dbService.getSetting('migrated_from_localstorage');
+    return migrationSetting?.value !== 'true';
+  }
+
+  // Get migration status
+  static getMigrationStatus(): {
+    completed: boolean;
+    migrationDate?: string;
+    hasLocalStorageData: boolean;
+  } {
+    const migrationSetting = dbService.getSetting('migrated_from_localstorage');
+    const migrationDate = dbService.getSetting('migration_date');
+
+    return {
+      completed: migrationSetting?.value === 'true',
+      migrationDate: migrationDate?.value,
+      hasLocalStorageData: false // Server can't access localStorage
+    };
+  }
+
+  // Mark migration as completed (called by client after successful migration)
+  static markMigrationCompleted(): boolean {
+    try {
+      dbService.setSetting('migrated_from_localstorage', 'true');
+      dbService.setSetting('migration_date', new Date().toISOString());
+      return true;
+    } catch (error) {
+      console.error('Failed to mark migration as completed:', error);
+      return false;
+    }
+  }
+
+  // Initialize default board if it doesn't exist
+  static ensureDefaultBoard(): void {
+    try {
+      let defaultBoard = dbService.getBoard('default');
+      if (!defaultBoard) {
+        defaultBoard = dbService.createBoard({
+          id: 'default',
+          name: 'Main Board'
+        });
+      }
+    } catch (error) {
+      console.error('Error ensuring default board exists:', error);
+    }
+  }
+
+  // Server-side initialization
+  static initialize(): void {
+    this.ensureDefaultBoard();
+
+    const status = this.getMigrationStatus();
+  }
+}

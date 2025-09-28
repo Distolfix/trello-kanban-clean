@@ -1,0 +1,200 @@
+/* Import scrollbar styles */
+@import './styles/scrollbar.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Kanban Design System - All colors in HSL */
+
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --surface: 0 0% 98%;
+    --surface-hover: 240 4.8% 95.9%;
+
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --card-hover: 240 4.8% 95.9%;
+
+    /* Interactive Elements */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Brand Colors - Modern Gradient Palette */
+    --primary: 263 85% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 100% 70%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 12 76% 61%;
+    --accent-foreground: 0 0% 98%;
+    --accent-glow: 24 100% 50%;
+
+    /* Status Colors */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 48 96% 53%;
+    --warning-foreground: 240 10% 3.9%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* UI Elements */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 263 85% 65%;
+
+    /* Kanban Specific */
+    --list-open: 142 71% 45%;
+    --list-closed: 48 96% 53%;
+    --list-hidden: 0 72% 51%;
+    --board-bg: 240 9% 98%;
+    --drag-overlay: 263 85% 65% / 0.1;
+
+    /* Shadows & Glows */
+    --shadow-sm: 0 1px 2px 0 hsl(240 10% 0% / 0.05);
+    --shadow: 0 4px 6px -1px hsl(240 10% 0% / 0.1), 0 2px 4px -2px hsl(240 10% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(240 10% 0% / 0.1), 0 4px 6px -4px hsl(240 10% 0% / 0.1);
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+    --glow-accent: 0 0 20px hsl(var(--accent) / 0.3);
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-board: linear-gradient(135deg, hsl(var(--board-bg)), hsl(240 4.8% 95.9%));
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Theme Colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --surface: 240 10% 6%;
+    --surface-hover: 240 8% 8%;
+
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 95%;
+    --card-hover: 240 8% 9%;
+
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 263 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 4.8% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5.9% 10%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5.9% 15%;
+    --input: 240 5.9% 15%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Dark theme specific */
+    --board-bg: 240 12% 4.5%;
+    --gradient-board: linear-gradient(135deg, hsl(var(--board-bg)), hsl(240 10% 6%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Kanban Board Components */
+  .kanban-board {
+    @apply bg-gradient-to-br from-[hsl(var(--board-bg))] to-[hsl(240_10%_6%)] min-h-screen;
+  }
+
+  .kanban-list {
+    @apply bg-[hsl(var(--surface))] rounded-xl border border-[hsl(var(--border))] 
+           shadow-[var(--shadow)] backdrop-blur-sm transition-all duration-200
+           hover:shadow-[var(--shadow-lg)] hover:bg-[hsl(var(--surface-hover))];
+  }
+
+  .kanban-card {
+    @apply bg-[hsl(var(--card))] rounded-lg border border-[hsl(var(--border))] 
+           shadow-[var(--shadow-sm)] transition-all duration-200 cursor-pointer
+           hover:shadow-[var(--shadow)] hover:bg-[hsl(var(--card-hover))] hover:-translate-y-0.5;
+  }
+
+  .list-badge-open {
+    @apply bg-[hsl(var(--success))] text-[hsl(var(--success-foreground))] text-xs font-medium px-2 py-1 rounded-full;
+  }
+
+  .list-badge-closed {
+    @apply bg-[hsl(var(--warning))] text-[hsl(var(--warning-foreground))] text-xs font-medium px-2 py-1 rounded-full;
+  }
+
+  .list-badge-hidden {
+    @apply bg-[hsl(var(--destructive))] text-[hsl(var(--destructive-foreground))] text-xs font-medium px-2 py-1 rounded-full;
+  }
+
+  .drag-handle {
+    @apply opacity-60 hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing;
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+}
+

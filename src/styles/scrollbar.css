@@ -1,0 +1,222 @@
+/* Simplified and Reliable Custom Scrollbar Styles */
+
+/* Global browser scrollbar - main page scrollbar */
+html, body {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--surface) / 0.3); /* Firefox */
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 16px;
+}
+
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+  background: hsl(var(--surface) / 0.3);
+  border-radius: 8px;
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 40px;
+}
+
+html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+  cursor: pointer;
+}
+
+html::-webkit-scrollbar-thumb:active, body::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--primary));
+}
+
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Base custom scrollbar with theme colors */
+.scrollbar-custom {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--surface) / 0.3); /* Firefox */
+}
+
+/* Webkit scrollbar styles - simplified for better mouse interaction */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: hsl(var(--surface) / 0.3);
+  border-radius: 7px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 7px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 30px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--primary));
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Vertical scrollbar - simplified and mouse-friendly with theme colors */
+.scrollbar-vertical {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--surface) / 0.3); /* Firefox */
+}
+
+.scrollbar-vertical::-webkit-scrollbar {
+  width: 16px;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-track {
+  background: hsl(var(--surface) / 0.3);
+  border-radius: 8px;
+  margin: 2px;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 40px;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+  cursor: pointer;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--primary));
+}
+
+.scrollbar-vertical::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Kanban specific scrollbar styles - clean and functional with theme colors */
+.kanban-list .scrollbar-vertical,
+div[class*="scrollbar-vertical"],
+.space-y-3.scrollbar-vertical {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--surface) / 0.3);
+}
+
+.kanban-list .scrollbar-vertical::-webkit-scrollbar,
+div[class*="scrollbar-vertical"]::-webkit-scrollbar,
+.space-y-3.scrollbar-vertical::-webkit-scrollbar {
+  width: 16px;
+  background: transparent;
+}
+
+.kanban-list .scrollbar-vertical::-webkit-scrollbar-track,
+div[class*="scrollbar-vertical"]::-webkit-scrollbar-track,
+.space-y-3.scrollbar-vertical::-webkit-scrollbar-track {
+  background: hsl(var(--surface) / 0.3);
+  border-radius: 8px;
+  margin: 2px;
+}
+
+.kanban-list .scrollbar-vertical::-webkit-scrollbar-thumb,
+div[class*="scrollbar-vertical"]::-webkit-scrollbar-thumb,
+.space-y-3.scrollbar-vertical::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-height: 40px;
+}
+
+.kanban-list .scrollbar-vertical::-webkit-scrollbar-thumb:hover,
+div[class*="scrollbar-vertical"]::-webkit-scrollbar-thumb:hover,
+.space-y-3.scrollbar-vertical::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+  cursor: pointer;
+}
+
+/* Horizontal scrollbar - simplified with theme colors */
+.scrollbar-horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--surface) / 0.3);
+}
+
+.scrollbar-horizontal::-webkit-scrollbar {
+  height: 14px;
+}
+
+.scrollbar-horizontal::-webkit-scrollbar-track {
+  background: hsl(var(--surface) / 0.3);
+  border-radius: 7px;
+}
+
+.scrollbar-horizontal::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 7px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  min-width: 40px;
+}
+
+.scrollbar-horizontal::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+  cursor: pointer;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure scrollbar is always interactive */
+.scrollbar-vertical::-webkit-scrollbar,
+.scrollbar-custom::-webkit-scrollbar {
+  pointer-events: auto;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-thumb,
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.scrollbar-vertical::-webkit-scrollbar-track,
+.scrollbar-custom::-webkit-scrollbar-track {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Mobile optimizations */
+@media (pointer: coarse) {
+  .scrollbar-vertical::-webkit-scrollbar {
+    width: 18px;
+  }
+
+  .scrollbar-vertical::-webkit-scrollbar-thumb {
+    min-height: 50px;
+  }
+}
